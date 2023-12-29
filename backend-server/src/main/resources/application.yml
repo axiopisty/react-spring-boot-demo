@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /
+      exposure:
+        include: health
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      show-components: always
+spring:
+  application:
+    name: bug_tracker
+  main:
+    lazy-initialization: false
+  sql:
+    init:
+      mode: always
+  r2dbc:
+    url: r2dbc:h2:mem:///bug_tracker

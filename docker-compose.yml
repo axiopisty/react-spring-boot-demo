@@ -1,0 +1,7 @@
+services:
+  bug-tracker:
+    build:
+      context: docker/api/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
