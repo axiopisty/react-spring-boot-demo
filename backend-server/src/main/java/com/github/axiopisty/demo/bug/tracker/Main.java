@@ -17,7 +17,7 @@ public class Main implements WebMvcConfigurer {
   
   /**
    * This method is overridden in order to enable serving the frontend
-   * react application from the root path.
+   * application (react/svelte) from the root path.
    */
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
@@ -31,7 +31,7 @@ public class Main implements WebMvcConfigurer {
   
   /**
    * This method is overridden in order to allow requests from the
-   * frontend react application while it is running in development
+   * frontend application (react/svelte) while it is running in development
    * mode.
    */
   @Override
