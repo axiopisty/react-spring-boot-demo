@@ -1,3 +1,4 @@
+# Default configuration shared by all profiles
 management:
   endpoints:
     enabled-by-default: false
@@ -13,10 +14,35 @@ management:
 spring:
   application:
     name: bug_tracker
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+    url: ${DATABASE_URL_JDBC}
   main:
     lazy-initialization: false
-  sql:
-    init:
-      mode: always
+    web-application-type: reactive
+  profiles:
+    active: default
+
+---
+spring:
+  config:
+    activate:
+      on-profile: default
+  liquibase:
+    password: ${DATABASE_PASSWORD}
+    user: ${DATABASE_USERNAME}
+  r2dbc:
+    url: ${DATABASE_URL_R2DBC}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  liquibase:
+    url: jdbc:h2:mem:bug_tracker
   r2dbc:
     url: r2dbc:h2:mem:///bug_tracker

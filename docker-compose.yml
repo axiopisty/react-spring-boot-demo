@@ -1,7 +1,44 @@
+version: "3.9"
+
 services:
+
+  database:
+    image: postgres:16.1-alpine3.19
+    hostname: database
+    environment:
+      POSTGRES_DB: bug_tracker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   bug-tracker:
+    depends_on:
+      database:
+        condition: service_healthy
     build:
       context: docker/api/
       dockerfile: Dockerfile
+    container_name: bug-tracker
+    hostname: bug-tracker
     ports:
       - "8080:8080"
+    environment:
+      - DATABASE_HOST=database
+      - DATABASE_PORT=5432
+      - DATABASE_URL_JDBC=jdbc:postgresql://database:5432/bug_tracker
+      - DATABASE_URL_R2DBC=r2dbc:postgresql://database:5432/bug_tracker
+      - DATABASE_NAME=bug_tracker
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_USERNAME=postgres
+
+volumes:
+  postgres-data:
