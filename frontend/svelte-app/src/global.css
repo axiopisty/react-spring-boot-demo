@@ -1,0 +1,131 @@
+:root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.error {
+  color: red;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.btn {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.dismiss {
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 310px;
+}
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  padding: 10px;
+  margin: 20px 0;
+  border: none;
+}
+
+legend {
+  font-weight: bold;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+  vertical-align: top;
+}
+
+input,
+textarea {
+  width: 300px;
+  padding: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  text-align: left;
+  margin-top: 50px;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.issue-actions a {
+  margin-right: 10px;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 20px 0 10px -10px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.sort-header {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sorted::before {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  margin: -11px 5px 0 0;
+}
+
+.asc::before {
+  content: "\2193"; /* Unicode 'down' arrow */
+}
+
+.desc::before {
+  content: "\2191"; /* Unicode 'up' arrow */
+}
+
+.status-filter-checkbox {
+  width: 30px;
+}
+
+.hidden {
+  display: none;
+}
